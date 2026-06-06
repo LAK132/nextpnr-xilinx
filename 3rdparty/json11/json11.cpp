@@ -26,6 +26,7 @@
 #include <cstdio>
 #include <climits>
 #include <cerrno>
+#include <cstdint>
 
 namespace json11 {
 
