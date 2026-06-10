@@ -149,7 +149,10 @@ void Arch::parseXdc(std::istream &in)
             std::vector<CellInfo *> dest = get_cells(arguments.at(3));
             for (auto c : dest)
                 for (const auto &pair : arg_pairs)
-                    c->attrs[id(pair.first)] = std::string(pair.second);
+                    if (pair.first == "DRIVE")
+                        c->attrs[id(pair.first)] = std::stoi(pair.second);
+                    else
+                        c->attrs[id(pair.first)] = std::string(pair.second);
         } else if (cmd == "create_clock") {
             double period = 0;
             bool got_period = false;
